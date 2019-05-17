@@ -1,6 +1,6 @@
 # JavaScript Pixel
 
-kSense Platform allows marketers and data owners to track their web-site usage through JavaScript pixel calls. This page technical aspect of tracking.
+kSense Platform allows marketers and data owners to track their web-site usage through JavaScript pixel calls. This page technical aspect of tracking. Test
 
 ### Pixel Initialization
 
