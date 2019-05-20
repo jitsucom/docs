@@ -24,7 +24,7 @@ kpix('track', {event_type}, [additional_paremeters])
 
 | Parameter | Description |
 | :--- | :--- |
-| user\_id | Ad additional user identification which helps kSense match users on cross-screen sessions. Please see a [dedicated page on user info](user-identification-calls.md) |
+| user\_info | Ad additional user identification which helps kSense match users on cross-screen sessions. Please see a [dedicated page on user info](user-identification-calls.md) |
 | labels | Arbitrary labels \(as string json array\) as "label\_name=label\_value". Those labels can be used for segment definitions |
 
 ### PageView call example
