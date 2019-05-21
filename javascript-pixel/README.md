@@ -26,6 +26,7 @@ kpix('track', {event_type}, [additional_paremeters])
 | :--- | :--- |
 | user\_info | Ad additional user identification which helps kSense match users on cross-screen sessions. Please see a [dedicated page on user info](user-identification-calls.md) |
 | labels | Arbitrary labels \(as string json array\) as "label\_name=label\_value". Those labels can be used for segment definitions |
+| conversion\_name | The custom conversion event name, configured via [Mappings](./#mappings) |
 
 ### PageView call example
 
@@ -61,5 +62,39 @@ kpix('user_info', {
   'email': 'md5:00de5f451333e5d393cc49f1f0fd0200',
   'phone': 'md5:614bb59e05c10c0aee2adb60c1d7cd42'
 });
+```
+
+## Mappings
+
+You can configure special event mappings for the pixel, which will trigger 3rd party tracking codes along with `kpix` tracking events.
+
+For example, you can tell kSense pixel to trigger Facebook and Google trackers when an event `conversion_name` property is set `engagement` in additional info section.
+
+First of all, configure appropriate mapping:
+
+```javascript
+kpix("map", {
+    "conversion_name": {
+        "engagement": {
+            "fb": "Lead",
+            "google": ["Videos", "play", "Fall Campaign"]
+        }
+    }
+});
+```
+
+Next, issue an event with special properties:
+
+```javascript
+kpix("track", "pv", {
+    "conversion_name": "engagement"
+});
+```
+
+That's it. Along with the rest, the code above will issue additional tracking events to Facebook and Google with parameters like that:
+
+```javascript
+fbq("track", "Lead"); // Facebook tracker
+ga("send", "event", "Videos", "play", "Fall Campaign"); // Google Analytics tracker
 ```
 
