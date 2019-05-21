@@ -1,4 +1,4 @@
-# JavaScript Pixel
+# JavaScript API
 
 kSense Platform allows marketers and data owners to track their web-site usage through JavaScript pixel calls. This page describes the technical aspect of tracking.
 

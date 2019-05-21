@@ -18,11 +18,12 @@ There're two ways to send user id object to kSense. Through [JavaScript pixel](.
 
 ```javascript
 {
-  'internal_id': 'djgagd'
-  'email': 'hash1:036e32c9556cc5979a0ec187cb3d45b8',
-  'phone': 'enc:MWKrIsbDoPiMeUD2mINLbg==',
-  'idfa': '6d92078a-8246-4ba4-ae5b-76104861e7dc',
-  'gaid': '38400000-8cf0-11bd-b23e-10b96e40000d'
+  "data_source_id": "123",
+  "internal_id": "djgagd",
+  "email": "hash1:036e32c9556cc5979a0ec187cb3d45b8",
+  "phone": "enc:MWKrIsbDoPiMeUD2mINLbg==",
+  "idfa": "6d92078a-8246-4ba4-ae5b-76104861e7dc",
+  "gaid": "38400000-8cf0-11bd-b23e-10b96e40000d"
 }
 
 ```
@@ -33,6 +34,7 @@ Following parameters can be defined in JSON object:
 
 | Name | Value |
 | :--- | :--- |
+| data\_source\_id | ID of datasource where this data is coming from |
 | internal\_id | Internal id |
 | email | User e-mail |
 | phone | User phone |
