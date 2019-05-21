@@ -19,8 +19,8 @@ There're two ways to send user id object to kSense. Through [JavaScript pixel](.
 ```javascript
 {
   'internal_id': 'djgagd'
-  'email': 'md5:036e32c9556cc5979a0ec187cb3d45b8',
-  'phone': 'aes:MWKrIsbDoPiMeUD2mINLbg==',
+  'email': 'hash1:036e32c9556cc5979a0ec187cb3d45b8',
+  'phone': 'enc:MWKrIsbDoPiMeUD2mINLbg==',
   'idfa': '6d92078a-8246-4ba4-ae5b-76104861e7dc',
   'gaid': '38400000-8cf0-11bd-b23e-10b96e40000d'
 }
@@ -56,14 +56,10 @@ Before encryption values should be normalized:
 <table>
   <thead>
     <tr>
-      <th style="text-align:left"><b>Name</b>
-      </th>
-      <th style="text-align:left"><b>Format</b>
-      </th>
-      <th style="text-align:left"><b>Valid</b>
-      </th>
-      <th style="text-align:left"><b>Invalid</b>
-      </th>
+      <th style="text-align:left">Name</th>
+      <th style="text-align:left">Format</th>
+      <th style="text-align:left">Valid</th>
+      <th style="text-align:left">Invalid</th>
     </tr>
   </thead>
   <tbody>
@@ -85,8 +81,7 @@ Before encryption values should be normalized:
         </td>
     </tr>
     <tr>
-      <td style="text-align:left"><b>idfa / gaid</b>
-      </td>
+      <td style="text-align:left">idfa/gaid</td>
       <td style="text-align:left">String value in lowercase. Dash symbol should be present after first 4,
         6, 8 and 10 bytes</td>
       <td style="text-align:left">
