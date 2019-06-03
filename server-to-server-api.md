@@ -8,6 +8,6 @@ Some of data signals can be sent directly to as server-to-server call
 
 Please, see 
 
-* [API reference documentation \(/api/v2/user\_info method\)](https://p.ksense.io/swagger-ui.html#/api-controller/userInfoUsingGET)
+* [API reference documentation \(/api/v2/user\_info method\)](https://p.ksense.io/swagger-ui.html#/api-controller/userInfoUsingPOST)
 * [User identification payload description](javascript-pixel/user-identification-calls.md)
 
