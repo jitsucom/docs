@@ -1,33 +1,25 @@
-# User identification calls
+# User ID Object
 
 ## Understanding user identification 
 
-A user can have a multiple identifiers: e-mail address \(if user has logged in with it\), phone number, IDFA \(mobile advertising ID\) and so on. The same person can be represented with different IDs on different platforms. kSense collects those data to be able to match user id and apply cross-device optimization / attribution.
+A user can have a multiple identifiers: e-mail address \(if user logged in with it\), phone number, IDFA \(iOS mobile advertising ID\) or GAID \(Android ID\). The same person can be represented with different IDs on different platforms. kSense collects those data to be able to match user id and apply cross-device optimization / attribution.
 
 ## User id object
 
 User ID object is a JSON structure that describes user ids. It may contain multiple IDs based on multiple identification strategies. It's important to provide as many IDs as possible in order to make matching more accurate. 
 
-There're two ways to send user id object to kSense. Through [JavaScript pixel](./) \([Tracking Call](./#example-with-additional-info) or dedicated [User Info](./#dedicated-user_info-calls) call\) or through server-2-server real-time API.
-
 {% hint style="info" %}
-**Note on PII \(Personally Identifiable Information\).** kSense never stores any personal information such as phone or e-mail on it's servers. If such information is passed without encryption, kSense will hash it a earliest stage possible and will store only hashed version
+**Note on PII \(Personally Identifiable Information\).** kSense never stores any personal information such as phone or e-mail on it's servers unless the customer explicitly opted in for it. If such information is passed without encryption, kSense will hash it a earliest stage possible and will store only hashed version
 {% endhint %}
 
 ### User id object example
 
 ```javascript
 {
-  "timestamp_utc": "",
-  "data_source_id": "123",
-  "internal_id": "djgagd",
   "email": "hash1:036e32c9556cc5979a0ec187cb3d45b8",
-  "phone": "enc:MWKrIsbDoPiMeUD2mINLbg==",
+  "phone": "enc1:bdbaef159f409ce00822ad0c58f9bbed",
   "idfa": "6d92078a-8246-4ba4-ae5b-76104861e7dc",
   "gaid": "38400000-8cf0-11bd-b23e-10b96e40000d",
-  "ip_v4": "195.91.204.4",
-  "location": [37.9842, 23.7353]
-  "labels": [{"label_name": "label value"}]
 }
 
 ```
@@ -44,22 +36,6 @@ Following parameters can be defined in JSON object:
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td style="text-align:left">timestamp_utc <em>(optional)</em>
-      </td>
-      <td style="text-align:left">If not present, we assume that event happened just now. Important: timestamp
-        is a second timestamp in UTC timezone.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">data_source_id *<em>(mandatory)</em>
-      </td>
-      <td style="text-align:left">ID of datasource where this data is coming from</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">internal_id <em>(optional)</em>
-      </td>
-      <td style="text-align:left">Internal id</td>
-    </tr>
     <tr>
       <td style="text-align:left">
         <p>email</p>
@@ -92,28 +68,12 @@ Following parameters can be defined in JSON object:
       </td>
       <td style="text-align:left">Google Advertiser ID</td>
     </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>location</p>
-        <p><em>(optional)</em>
-        </p>
-      </td>
-      <td style="text-align:left">User location, JSON array as [longitude, latitude]</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>labels</p>
-        <p><em>(optional)</em>
-        </p>
-      </td>
-      <td style="text-align:left">Custom labels as JSON map {&quot;label_name&quot;, &quot;label_value&quot;}</td>
-    </tr>
   </tbody>
 </table>### Encryption
 
 Sometimes passing PII information \(such as e-mail or phone\) is not desirable \(despite the fact that kSense will not store unencrypted version — see above\). For that cases each parameter can be passed encrypted. We support encryption for all parameters except internal\_id. 
 
-If the value is encrypted, the string should be prefixed with md5: or aes: \(depending on encryption type\). Other val
+If the value is encrypted, the string should be prefixed with _hash1:_ or _enc1:_ \(depending on encryption type\). 
 
 #### Normalizing values before encryption
 
@@ -175,15 +135,106 @@ Examples:
 * [Phone with encryption](https://p.ksense.io/api/v2/canonical_id?id=1929.367.3456&type=phone&encryptionKey=e05eb32e0d08405da15c116ef7f747cd)
 * [Email without encryption](https://p.ksense.io/api/v2/canonical_id?id=JaneDoe@gmail.com&type=email)
 
-#### MD5
+Please see how encryption hash1 / enc1 encryption works
 
-* The value is treated as ascii string and transformed to byte array
-* Byte array is hashed with standard md5 algorithm
+#### HASH1
 
-**AES**
+* The value is treated as UTF- string and transformed to byte array
+* Byte array is hashed with standard sha-256 algorithm
+* Byte array is represented as hex-encoded string
 
-* The value is treated as ascii string and transformed to byte array
+See reference implementation below
+
+{% tabs %}
+{% tab title="Java" %}
+```java
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+
+public class Hash1ReferenceImplementation {
+    private static String bytesToHex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (byte b : bytes) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
+
+    public static String encrypt(String value) throws Exception {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        return bytesToHex(md.digest(value.getBytes(StandardCharsets.UTF_8)));
+    }
+
+    public static void main(String[] args) throws Exception {
+        System.out.println(encrypt("jon@snow.cc"));
+    }
+}
+
+```
+{% endtab %}
+
+{% tab title="Python" %}
+```python
+import hashlib 
+
+str = "jon@snow.cc"
+result = hashlib.sha256(str.encode('utf-8')) 
+print(result.hexdigest()) 
+```
+{% endtab %}
+{% endtabs %}
+
+**ENC1**
+
+* The value is treated as UTF8 string and transformed to byte array
 * Byte array is hashed with standard AES algorithm with 16-bit encryption key. Encryption key is available in dataset properties \(in user interface\)
+* Byte array is represented as hex-encoded string
 
+**Reference implementation**
 
+{% tabs %}
+{% tab title="Java" %}
+```java
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+
+public class Enc1ReferenceImplementation {
+    private static String bytesToHex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (byte b : bytes) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
+
+    public static byte[] hexToBytes(String s) {
+        byte[] b = new byte[s.length() / 2];
+        for (int i = 0; i < b.length; i++) {
+            int index = i * 2;
+            int v = Integer.parseInt(s.substring(index, index + 2), 16);
+            b[i] = (byte) v;
+        }
+        return b;
+    }
+
+    public static String encrypt(String value, String key) throws Exception {
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(hexToBytes(key.toLowerCase()), "AES"));
+        return bytesToHex(cipher.doFinal(value.getBytes(StandardCharsets.UTF_8)));
+    }
+
+    public static void main(String[] args) throws Exception {
+        System.out.println(encrypt("jon@snow.cc", "48cd4fb6f716796722625680c736ff38"));
+    }
+}
+```
+{% endtab %}
+
+{% tab title="Python" %}
+```python
+#TODO
+```
+{% endtab %}
+{% endtabs %}
 

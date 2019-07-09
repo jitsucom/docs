@@ -1,10 +1,12 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [What's new](whats-new.md)
-* [JavaScript API](javascript-pixel/README.md)
-  * [User identification calls](javascript-pixel/user-identification-calls.md)
-* [Server-to-Server API](server-to-server-api.md)
-* [API References](apis/README.md)
-  * [Signals API Reference](https://p.ksense.io/swagger-ui.html)
+* [Events API](events-api/README.md)
+  * [User ID Object](events-api/user-identification-calls.md)
+  * [Event JSON](events-api/event-json.md)
+  * [JavaScript API](events-api/javascript-pixel.md)
+  * [Server API](events-api/server-api.md)
+* [Insights API](insights-api.md)
+* [Case Scenarios](case-scenarios/README.md)
+  * [Subscription Services](case-scenarios/subscription-services.md)
 
