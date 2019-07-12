@@ -2,7 +2,7 @@
 
 Insights API is designed to provide thorough information on each user
 
-{% api-method method="get" host="https://p.ksens.ai" path="/api/v2/user\_insights" %}
+{% api-method method="get" host="https://insights-api.ksense.ai" path="/api/v2/insights/user" %}
 {% api-method-summary %}
 User Insights
 {% endapi-method-summary %}
