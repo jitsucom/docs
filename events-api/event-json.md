@@ -2,6 +2,10 @@
 
 Each event is represented by JSON structure. Please, see the structure schema below with examples for a few types of event
 
+{% hint style="info" %}
+Event Object Model is based on protobuf definition which is available [on our public repository on GitHub](https://github.com/ksense-co/events-api)
+{% endhint %}
+
 * **time \*\*** — an event date \(always in _**UTC!**_\), formatted as 'yyyy-MM-dd HH:mm:ss' \(example: 2018-01-14 20:45:21'\)
 * **type \*** — type of event
 * **event\_id \*\*** — unique id of event. If two events with same ID is posted to the system the later one will completely overwrite the former. The ID could be any string up to 256 character long.
