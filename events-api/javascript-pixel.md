@@ -7,7 +7,7 @@ kSense Platform allows marketers and data owners to track their web-site usage t
 In order to start tracking events following code should be placed at the head section of page:
 
 ```javascript
-<script src="https://p.ksense.io/t/callbacks.js"></script>
+<script src="https://p.ksense.io/static/ks.js"></script>
 ```
 
 ## Tracking
