@@ -18,7 +18,7 @@ Authentication token. Alternatively token can be passed as query param. Token ca
 {% endapi-method-headers %}
 
 {% api-method-query-parameters %}
-{% api-method-parameter name="tok" type="string" %}
+{% api-method-parameter name="token" type="string" %}
 Alternative way for passing authentication token
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}
@@ -77,7 +77,7 @@ User ID \(see User ID Object Documentation\)
 Type of user id \(see User ID Object documentation\)
 {% endapi-method-parameter %}
 
-{% api-method-parameter name="tok" type="string" required=true %}
+{% api-method-parameter name="token" type="string" required=true %}
 Authentification token
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}
@@ -128,7 +128,7 @@ Deletes all events from  and user from given dataset
 Datasource ID
 {% endapi-method-parameter %}
 
-{% api-method-parameter name="tok" type="string" required=true %}
+{% api-method-parameter name="token" type="string" required=true %}
 Auth token
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}

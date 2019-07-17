@@ -26,7 +26,7 @@ Type of user id: email, phone or internal\_id
 Data Source ID
 {% endapi-method-parameter %}
 
-{% api-method-parameter name="tok" type="string" required=true %}
+{% api-method-parameter name="token" type="string" required=true %}
 Access token \(provided within kSense UI\)
 {% endapi-method-parameter %}
 {% endapi-method-query-parameters %}
