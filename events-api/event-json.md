@@ -6,7 +6,7 @@ Each event is represented by JSON structure. Please, see the structure schema be
 Event Object Model is based on protobuf definition which is available [on our public repository on GitHub](https://github.com/ksense-co/events-api)
 {% endhint %}
 
-* **time\_utc \*\*** — an event date \(always in _**UTC!**_\), formatted as 'yyyy-MM-dd HH:mm:ss' \(example: 2018-01-14 20:45:21'\)
+* **time\_utc \*\*** — an event date \(always in _**UTC!**_\), formatted as 'yyyy-MM-ddTHH:mm:ss' \(example: 2018-01-14T20:45:21Z'\)
 * **type \*** — type of event
 * **event\_id \*\*** — unique id of event. If two events with same ID is posted to the system the later one will completely overwrite the former. The ID could be any string up to 256 character long.
 * **data\_source\_id \*** — data source id number \(provided by kSense management console\)
@@ -28,7 +28,7 @@ However, providing _user\_info_ is strictly recommended \(if user is known\) for
 
 ```javascript
 {
-  "time_utc": "2018-11-12 14:02:45",
+  "time_utc": "2018-11-12T14:02:45Z",
   "type": "pv",
   "event_id": "da9ae80f-4db4/0-334",
   "data_source_id": 4,
