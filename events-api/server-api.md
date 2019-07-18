@@ -112,13 +112,13 @@ Authentification token
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="https://insights-api.ksense.ai" path="/api/v2/insights/purge\_dataset" %}
+{% api-method method="get" host="https://insights-api.ksense.ai" path="/api/v2/insights/purge\_datasource" %}
 {% api-method-summary %}
 Purge Datasource
 {% endapi-method-summary %}
 
 {% api-method-description %}
-Deletes all events from  and user from given dataset
+Deletes all events from  and user from given datasource
 {% endapi-method-description %}
 
 {% api-method-spec %}
