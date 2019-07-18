@@ -9,7 +9,7 @@ Event Object Model is based on protobuf definition which is available [on our pu
 * **time \*\*** — an event date \(always in _**UTC!**_\), formatted as 'yyyy-MM-dd HH:mm:ss' \(example: 2018-01-14 20:45:21'\)
 * **type \*** — type of event
 * **event\_id \*\*** — unique id of event. If two events with same ID is posted to the system the later one will completely overwrite the former. The ID could be any string up to 256 character long.
-* **data\_source\_id \*** — data source id \(provided by kSense management console\)
+* **data\_source\_id \*** — data source id number \(provided by kSense management console\)
 * **labels** — custom event labels \(as array of {"label\_name": "label\_value"}\)
 * **device** — device information
   * **ip\_v4** — IP v4
@@ -31,7 +31,7 @@ However, providing _user\_info_ is strictly recommended \(if user is known\) for
   "time_utc": "2018-11-12 14:02:45",
   "type": "pv",
   "event_id": "da9ae80f-4db4/0-334",
-  "data_source_id": "4",
+  "data_source_id": 4,
   "labels": {
     "custom_field1": "val1",
     "custom_field2": "val2"

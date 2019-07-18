@@ -28,7 +28,7 @@ Where event\_json is a [JSON representation of event](event-json.md)
  */
 kpix({
     "type": "pv", //pv means "Page View"
-    "data_source_id": "4",
+    "data_source_id": 4,
     "labels": {
         "custom_field1": "val1",
         "custom_field2": "val2"
@@ -47,7 +47,7 @@ kpix({
  */
 kpix({
     "type": "conversion",
-    "data_source_id": "4",
+    "data_source_id": 4,
     "user_id": {
         "email": "hash1:036e32c9556cc5979a0ec187cb3d45b8",
 
@@ -68,14 +68,14 @@ kpix({
  */
 kpix({
     "type": "conversion",
-    "data_source_id": "4",
+    "data_source_id": 4,
     "user_id": {
         "email": "hash1:036e32c9556cc5979a0ec187cb3d45b8",
         "internal_id": "87556713",
         "phone": "enc1:bdbaef159f409ce00822ad0c58f9bbed"
     },
     "event_data": {
-        "zip": 10016,
+        "zip": "10016",
         "value_currency": "USD",
         "address_line_2": "apt 345",
         "acquisition_channel": ["online", "facebook"]
