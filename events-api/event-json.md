@@ -14,7 +14,7 @@ Event Object Model is based on protobuf definition which is available [on our pu
 * **device** — device information
   * **ip\_v4** — IP v4
   * **ip\_v6** — IP v6
-* **user\_id \*\*** — information about the user
+* **user\_id \*\*** — information about the user. See [User ID Object documentation for more detailed information](user-identification-calls.md#understanding-user-identification)
   * **email, phone, idfa, gaid, internal\_id** — any combination of fields above. Please, see User ID section for more details
 * **event\_data** — a JSON structure with custom parameters specific to event type. See parameters for system event types below. Custom event types may have any data associated with
 

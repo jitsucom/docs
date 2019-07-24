@@ -24,26 +24,5 @@ Each event has a type name. Some event types are pre-defined \(system even types
 | sub\_resume | Subscription resume |
 | support\_contact | Contact support |
 
-#### Event Properties
-
-
-
-#### User ID
-
-Each user can have a number of ids. Supported IDs: e-mail, phone number, internal ID, cookie-based id, IDFA \(Apple's advertising ID\), GAID \(Google ID for Advertising\)
-
-Each ID can be provided either as a raw ID, or encrypted. kSense supports two types of encryption:
-
-* One-way SHA-256 \(**hash1**\)
-* AES based \(**enc1**\)
-
-AES-encryption is done with key attached to data-source id \(see above\)
-
-Example
-
-**Device**
-
-
-
-
+Please see [Event JSON](event-json.md) page for further documentation.
 
