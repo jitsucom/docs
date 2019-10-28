@@ -1,4 +1,4 @@
 # Introduction
 
-kSense helps businesses understand customer intentions using data.
+kSense helps businesses collect, correlate and perform action based on customer intentions.
 

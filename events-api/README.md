@@ -2,7 +2,7 @@
 
 ### Introduction
 
-kSense provides event API for exporting events to its analytics and prediction system. Events can have different meaning \(depending on purpose of client integration\). It could be web page views, mobile app usage, conversions, subscription / un-subscription events and so on. Moreover, user can define a custom event types. 
+kSense provides event API for exporting events to its analytics and prediction system. Events can have different meaning \(depending on purpose of client integration\). It could be web page views, mobile app usage, conversions, subscription / un-subscription events and so on. Moreover, user can define a custom event types.  
 
 There're two ways of exporting events: through JavaScript call \(pixel\) and server-to-server. Both options have the same JSON API with minor differences in user-indentification process. All definitions are applicable to both JavaScript and JSON APIs. 
 
