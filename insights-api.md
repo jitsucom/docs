@@ -1,6 +1,6 @@
 # Insights API
 
-Insights API is designed to provide thorough information on each user
+Insights API is designed to provide thorough information on each user.
 
 {% api-method method="get" host="https://insights-api.ksense.ai" path="/api/v2/insights/user" %}
 {% api-method-summary %}
